@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select{
+  height:15px;
+  min-height: 15px;
+}
+body {
+  color: rgb(var(--foreground-rgb));
+  /*color:rgb(190, 184, 184);*/
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.shadow-navbar-bottom {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.10);
+  color:rgb(10, 212, 37)
+  
+}
+
+
+/*custom style material ui components*/
+
+ [type='button'], [type='reset'], [type='submit']{
+  background-color: '#0f8dc7';
+}
+.button-login-signup{
+  background-color: transparent;
+}
+
+.recharts-layer{
+  outline: none;
+}
+
+

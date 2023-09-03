@@ -1,0 +1,321 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  GUEST
+  RECEPTION
+  // adding roles for restaurant POS
+  CASHIER
+  CHEF
+}
+
+
+
+model User {
+  id       Int      @id @default(autoincrement())
+  //email unique and index 
+  email    String   @unique 
+  name      String
+  role      Role     @default(GUEST)
+  picture   String   @default("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png")
+  password  String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  hotelId   Int
+  hotel     Hotel    @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+}
+
+model Hotel {
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  address         String
+  city            String
+  phone           String
+  email           String           @unique
+  website         String?
+  description     String           @db.Text
+  image           String?
+  logo            String?
+  latitude        Float?
+  longitude       Float?
+  roomsPassword   String?          @default("$argon2id$v=19$m=4096,t=3,p=1$CrZzv9lNe0teQU9/WKYgvQ$AeNR1mTnbwW0J0LVyg58UyU7FAWff1HVsGYYv9DQvzg") // motdepasse 
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  users           User[]
+  items           Item[]
+  rooms           Room[]
+  roomTypes       RoomType[]
+  wifiAPs         Wifi[]
+  restaurants     Restaurant[]
+  spaServices     SpaService[]
+  enabledServices EnabledService[]
+}
+
+model Wifi {
+  id       Int    @id @default(autoincrement())
+  name     String
+  password String
+  hotelId  Int
+  hotel    Hotel  @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+}
+
+model Room {
+  id             String     @id @default(cuid())
+  number         Int
+  maxCapacity    Int?       @db.SmallInt
+  petsAllowed    Boolean    @default(false)
+  smokingAllowed Boolean    @default(false)
+  floor          Int?       @db.SmallInt
+  price          Decimal?   @db.Decimal(10, 2)
+  status         RoomStatus @default(AVAILABLE)
+  guestId        String?
+  hotelId        Int
+  roomTypeId     Int
+  hotel          Hotel      @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  roomType       RoomType   @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+  guest          Guest?     @relation(fields: [guestId], references: [id])
+  bookings       Booking[]
+
+  @@unique([hotelId, number], name: "unique_room")
+}
+
+model RoomType {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String   @db.Text
+  feature     String?  @db.Text
+  createdAt   DateTime @default(now())
+  // deletedAt   Boolean  @default(false)
+  hotelId     Int
+  hotel       Hotel    @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  rooms       Room[]
+}
+
+enum RoomStatus {
+  AVAILABLE // when room neither booked nor occupied
+  BOOKED // when room is booked but not occupied
+  OCCUPIED // when room is occupied
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+model Guest {
+  id           String    @id @default(cuid())
+  identityCard String
+  firstname    String
+  lastname     String
+  gender       Gender    @default(MALE)
+  email        String?
+  address      String    @db.Text
+  phone        String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  rooms        Room[]
+  bookings     Booking[]
+}
+
+model Booking {
+  id              String           @id @default(cuid())
+  numberOfGuests  Int              @db.SmallInt
+  guestId         String
+  roomId          String
+  checkIn         DateTime
+  checkOut        DateTime?
+  status          BookingStatus    @default(PENDING)
+  bookingPrice    Decimal          @db.Decimal(10, 2)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  guest           Guest            @relation(fields: [guestId], references: [id], onDelete: Restrict)
+  room            Room             @relation(fields: [roomId], references: [id], onDelete: Restrict)
+  orders          Order[]
+  cartItems       Cart[]
+  spaAppointments SpaAppointment[]
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  // add more
+  CHECKEDIN
+  CHECKEDOUT
+}
+
+enum ServiceName {
+  SPA
+  // GYM
+  RESTAURANT
+  // SWIMMING_POOL
+  // ROOM_SERVICE
+  LAUNDRY
+  EXCURSIONS
+  // WAKE_UP_SERVICE
+  HOUSEKEEPING
+  EVENTS
+  // ATTRACTIONS
+}
+
+model EnabledService {
+  name    ServiceName
+  hotelId Int
+  hotel   Hotel       @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@id([name, hotelId])
+}
+
+model Restaurant {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @db.Text
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  hotelId     Int
+  hotel       Hotel    @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  menus       Menu[]
+}
+
+model Menu {
+  id           Int            @id @default(autoincrement())
+  name         String
+  description  String         @db.Text
+  image        String?
+  enabled      Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  restaurantId Int
+  restaurant   Restaurant     @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  categories   MenuCategory[]
+}
+
+model MenuCategory {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String     @db.Text
+  image       String?
+  enabled     Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  menuId      Int
+  menu        Menu       @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  items       MenuItem[]
+}
+
+model MenuItem {
+  id              Int          @id @default(autoincrement())
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  categoryId      Int
+  referenceItemId Int          @unique
+  referenceItem   Item         @relation(fields: [referenceItemId], references: [id])
+  category        MenuCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+// create Item model for storing all items in hotel
+model Item {
+  id              Int              @id @default(autoincrement())
+  name            String
+  description     String           @db.Text
+  price           Decimal          @db.Decimal(10, 2)
+  image           String?
+  enabled         Boolean          @default(true)
+  service         ServiceName
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  orders          Order[]
+  carts           Cart[]
+  hotelId         Int
+  menuItem        MenuItem?
+  spaService      SpaService?      @relation(fields: [spaServiceId], references: [id])
+  hotel           Hotel            @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  spaServiceId    Int?
+  spaAppointments SpaAppointment[]
+}
+
+
+model Order {
+  id        String      @id @default(cuid())
+  quantity  Int         @default(1)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  status    OrderStatus @default(PENDING)
+  itemId    Int
+  item      Item        @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  bookingId String
+  booking   Booking     @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+enum OrderStatus {
+  PENDING // when item is confirmed but yet to be processed
+  CONFIRMED // when item is confirmed and processed
+  CANCELLED // when item is cancelled for some reason
+  SERVED // when item is served
+}
+
+// * For storing temporary items in cart
+model Cart {
+  id        String   @id @default(cuid())
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  itemId    Int
+  item      Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  bookingId String
+  booking   Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@unique([itemId, bookingId])
+}
+
+
+model SpaService {
+  id          Int                 @id @default(autoincrement())
+  name        String
+  description String              @db.Text
+  image       String?
+  enabled     Boolean             @default(true)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  items       Item[]
+  hotelId     Int
+  hotel       Hotel               @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  unavailable SpaUnavailability[]
+}
+
+model SpaAppointment {
+  id        String      @id @default(cuid())
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  status    OrderStatus @default(PENDING)
+  from      DateTime
+  to        DateTime
+  price     Decimal     @db.Decimal(10, 2)
+  summary   String
+  bookingId String
+  booking   Booking     @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  itemId    Int
+  item      Item        @relation(fields: [itemId], references: [id], onDelete: Cascade)
+}
+
+model SpaUnavailability {
+  id           Int        @id @default(autoincrement())
+  from         DateTime
+  to           DateTime
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  spaServiceId Int
+  spaService   SpaService @relation(fields: [spaServiceId], references: [id], onDelete: Cascade)
+}
