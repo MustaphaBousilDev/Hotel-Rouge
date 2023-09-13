@@ -24,7 +24,7 @@ const AdminDashboard = () => {
   return (
     <AdminLayout>
       {/*Card Statistiques*/}
-      <div className='flex min-h-[100vh] flex-col gap-1 sm:flex-row'>
+      <div className='flex min-h-[100vh]  flex-col gap-1 sm:flex-row'>
         <div className='w-[100%] md:w-[60%]  lg:w-[60%] xl:w-[76%] flex  gap-2 flex-col'>
           <CardStatistiques menu={STATICS} />
           <TestimonialDash/>

@@ -16,8 +16,8 @@ const styleImg={
 const Bookings = () => {
   return (
     <>
-        <div className='flex flex-col xl:flex-row gap-4'>
-            <div className='bg-white rounded-3xl shadow-lg p-5 px-4 w-[98%] mx-auto xl:mx-0 xl:w-[65.5%]'>
+        <div className='flex flex-col xl:flex-row gap-2'>
+            <div className='bg-white rounded-3xl shadow-lg p-5 py-3 px-4 w-[98%] mx-auto xl:mx-0 xl:w-[65.5%]'>
                 <div className='flex items-center justify-between'>
                     <div>
                         <h2 className=' font-bold text-lg text-gray-800'>Bookings</h2>
@@ -133,20 +133,22 @@ const Bookings = () => {
                     </ul>
                 </div>
             </div>
-            <div className=' border-4 border-primary bg-white rounded-3xl shadow-lg p-3 px-2 w-[98%] h-96 relative mx-auto xl:mx-0 xl:w-[34%]'>
+            <div className=' border-4 border-primary bg-white rounded-3xl shadow-lg p-3 px-2 w-[98%] h-[370px] relative mx-auto xl:mx-0 xl:w-[34%]'>
                 <PieChartRooms/>
             </div>
         </div>
         <div className='w-full flex flex-col bg-white shadow-lg rounded-2xl p-2 px-4 my-2'>
             <div className='flex items-center justify-between'>
-                <div className='header__review flex gap-1 items-center'>
-                    <StarIcon 
-                        color='#06b6d4' 
-                        width='20px' 
-                        height='20px' 
-                        className=''
-                    />
-                    <span className='text-xl font-semibold text-primary'>5.0</span>
+                <div className='header__review flex gap-4 items-center'>
+                    <div className='flex gap-1 items-center'>
+                        <StarIcon 
+                            color='#06b6d4' 
+                            width='20px' 
+                            height='20px' 
+                            className=''
+                        />
+                        <span className='text-xl font-semibold text-primary'>5.0</span>
+                    </div>
                     <p className='flex items-center gap-[2px]'>
                         <span className='font-bold'>543</span>
                         <span className=' font-semibold'>Reviews</span>
@@ -160,8 +162,8 @@ const Bookings = () => {
             </div>
             <span className=' text-gray-500 flex mx-1 text-xs'>1.658 Customer rate</span>
             <div className=' my-3 flex flex-col gap-1'>
-                <ul className='flex gap-3 items-center px-4 border-b py-1'>
-                    <li>
+                <ul className='flex gap-3  items-center px-4 border-b py-1'>
+                    <li className=' pr-10'>
                         <ul className=' flex flex-col items-center'>
                             <li>
                                 <Image 
@@ -179,7 +181,7 @@ const Bookings = () => {
                         itaque commodi placeat impedit consequatur reiciendis exercitationem 
                         cupiditate molestiae voluptatem! Voluptates, cupiditate.
                     </li>
-                    <li className='flex items-center gap-[2px]'>
+                    <li className='flex items-center pl-10 gap-[2px]'>
                         <span>
                             <StarDarkIcon 
                                 width='35px' height='35px'
@@ -189,8 +191,8 @@ const Bookings = () => {
                         <span className='font-bold text-primary'>5.0</span>
                     </li>
                 </ul>
-                <ul className='flex gap-3 items-center px-4 border-b py-1'>
-                    <li>
+                <ul className='flex gap-3  items-center px-4 border-b py-1'>
+                    <li className=' pr-10'>
                         <ul className=' flex flex-col items-center'>
                             <li>
                                 <Image 
@@ -208,7 +210,7 @@ const Bookings = () => {
                         itaque commodi placeat impedit consequatur reiciendis exercitationem 
                         cupiditate molestiae voluptatem! Voluptates, cupiditate.
                     </li>
-                    <li className='flex items-center gap-[2px]'>
+                    <li className='flex items-center pl-10 gap-[2px]'>
                         <span>
                             <StarDarkIcon 
                                 width='35px' height='35px'
@@ -218,8 +220,8 @@ const Bookings = () => {
                         <span className='font-bold text-primary'>5.0</span>
                     </li>
                 </ul>
-                <ul className='flex gap-3 items-center px-4 border-b py-1'>
-                    <li>
+                <ul className='flex gap-3  items-center px-4 border-b py-1'>
+                    <li className=' pr-10'>
                         <ul className=' flex flex-col items-center'>
                             <li>
                                 <Image 
@@ -237,7 +239,7 @@ const Bookings = () => {
                         itaque commodi placeat impedit consequatur reiciendis exercitationem 
                         cupiditate molestiae voluptatem! Voluptates, cupiditate.
                     </li>
-                    <li className='flex items-center gap-[2px]'>
+                    <li className='flex items-center pl-10 gap-[2px]'>
                         <span>
                             <StarDarkIcon 
                                 width='35px' height='35px'

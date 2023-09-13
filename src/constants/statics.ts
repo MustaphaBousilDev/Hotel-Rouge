@@ -61,3 +61,30 @@ export const STATICS: TStatic[] = [
         IconTradinf: ArrowTradingIcon,
     },
   ];
+
+  export const GUASTS_DASH_STATICS: TStatic[] = [
+    {
+      url: '/admin/hotel',
+      label: 'Total Guasts', 
+      percent: 2,
+      total: 100,
+      Icon: UsersIcon,
+      IconTradinf: ArrowTradingIcon,
+    },
+    {
+        url: '/admin/hotel',
+        label: 'Special Guasts',
+        percent: 2,
+        total: 100,
+        Icon: BathRoomIcon,
+        IconTradinf: ArrowTradingIcon,
+    },
+    {
+      url: '/admin/hotel',
+      label: 'Satisfy Guasts',
+      percent: 2,
+      total: 100,
+      Icon: BathRoomIcon,
+      IconTradinf: ArrowTradingIcon,
+  },
+  ];
