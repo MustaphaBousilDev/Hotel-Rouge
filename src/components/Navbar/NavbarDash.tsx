@@ -63,7 +63,7 @@ export const NavbarDash:React.FC = () => {
   },[])
   return (
     <div className={`fixed bg-white flex transition-all duration-150 items-center px-8  top-0 
-      sm:left-[3rem] md:left-[3rem] lg:left-[18rem] w-full h-[4rem]
+      sm:left-[3rem] md:left-[3rem] lg:left-[18rem] w-full z-[10000] h-[4rem]
       ${isScrolled && 'h-[68px] shadow-navbar-bottom'}`}>
       <div className='sm:w-[40%] md:w-[70%] lg:w-[60%] xl:w-[85%] h-[80%]  flex  '>
         <Search 

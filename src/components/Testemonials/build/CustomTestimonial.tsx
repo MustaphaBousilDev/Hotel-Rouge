@@ -30,12 +30,15 @@ export const CustomTestimonial = () => {
         <ul className='flex  h-10 bg-white border w-[98%] mr-auto rounded-3xl overflow-hidden'>
             <li
             onClick={()=>setSelectedComponent('GUASTS')}
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'GUASTS' ? 'bg-blue-500' : ''}`}>
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'GUASTS' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full'>
                     <span>
-                        <UsersIcon color='rgb(107 114 128)'/>
+                        <UsersIcon color={`${selectedComponent==='GUASTS' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
-                    <span className='hidden xl:flex text-xs xl:text-sm text-gray-700'>
+                    <span className={`
+                    hidden xl:flex text-xs xl:text-sm text-gray-700
+                    ${selectedComponent === 'GUASTS' ? 'text-white' : ''}
+                    `}>
                         Guasts
                     </span>
                 </div>
@@ -43,84 +46,105 @@ export const CustomTestimonial = () => {
             </li>
             <li
             onClick={()=>setSelectedComponent('EMPLOYE')} 
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'EMPLOYE' ? 'bg-blue-500' : ''}`}>
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'EMPLOYE' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full '>
                     <span>
-                        <UsersIcon color='rgb(107 114 128)'/>
+                        <UsersIcon color={`${selectedComponent==='EMPLOYE' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
-                    <span className='hidden xl:flex text-xs xl:text-sm text-gray-700'>
+                    <span className={`
+                    hidden xl:flex text-xs xl:text-sm text-gray-700
+                    ${selectedComponent === 'EMPLOYE' ? 'text-white' : ''}
+                    `}>
                         Employée
                     </span>
                 </div>
             </li>
             <li 
-            onClick={()=>setSelectedComponent('EMPLOYE')} 
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'EMPLOYE' ? 'bg-blue-500' : ''}`}>
+            onClick={()=>setSelectedComponent('EMPLOYEs')} 
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'EMPLOYEs' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full '>
                     <span>
-                        <UsersIcon color='rgb(107 114 128)'/>
+                        <UsersIcon color={`${selectedComponent==='EMPLOYEs' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
-                    <span className='hidden xl:flex text-xs xl:text-sm text-gray-700'>
+                    <span className={`
+                    hidden xl:flex text-xs xl:text-sm text-gray-700
+                    ${selectedComponent === 'EMPLOYEs' ? 'text-white' : ''}
+                    `}>
                         Employee
                     </span>
                 </div>
             </li>
             <li 
             onClick={()=>setSelectedComponent('BOOKINGS')} 
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'BOOKINGS' ? 'bg-blue-500' : ''}`}>
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'BOOKINGS' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full '>
                     <span>
-                        <UsersIcon color='rgb(107 114 128)'/>
+                        <UsersIcon color={`${selectedComponent==='BOOKINGS' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
-                    <span className='hidden xl:flex text-xs xl:text-sm text-gray-700'>
+                    <span className={`
+                    hidden xl:flex text-xs xl:text-sm text-gray-700
+                    ${selectedComponent === 'BOOKINGS' ? 'text-white' : ''}
+                    `}>
                         Bookings
                     </span>
                 </div>
             </li>
             <li 
             onClick={()=>setSelectedComponent('ORDERS')} 
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'ORDERS' ? 'bg-blue-500' : ''}`}>
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'ORDERS' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full '>
                     <span>
-                        <UsersIcon color='rgb(107 114 128)'/>
+                        <UsersIcon color={`${selectedComponent==='ORDERS' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
-                    <span className='hidden xl:flex text-xs xl:text-sm text-gray-700'>
+                    <span className={`
+                    hidden xl:flex text-xs xl:text-sm text-gray-700
+                    ${selectedComponent === 'ORDERS' ? 'text-white' : ''}
+                    `}>
                         Orders
                     </span>
                 </div>
             </li>
             <li 
             onClick={()=>setSelectedComponent('ROOMS')} 
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'ROOMS' ? 'bg-blue-500' : ''}`}>
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'ROOMS' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full '>
                     <span>
-                        <UsersIcon color='rgb(107 114 128)'/>
+                        <UsersIcon color={`${selectedComponent==='ROOMS' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
-                    <span className='hidden xl:flex text-xs xl:text-sm text-gray-700'>
+                    <span className={`
+                    hidden xl:flex text-xs xl:text-sm text-gray-700
+                    ${selectedComponent === 'ROOMS' ? 'text-white' : ''}
+                    `}>
                         Rooms
                     </span>
                 </div>
             </li>
             <li 
             onClick={()=>setSelectedComponent('SERVICES')} 
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'SERVICES' ? 'bg-blue-500' : ''}`}>
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'SERVICES' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full '>
                     <span>
-                        <UsersIcon color='rgb(107 114 128)'/>
+                        <UsersIcon color={`${selectedComponent==='SERVICES' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
-                    <span className='hidden xl:flex text-xs xl:text-sm text-gray-700'>
+                    <span className={`
+                    hidden xl:flex text-xs xl:text-sm text-gray-700
+                    ${selectedComponent === 'SERVICES' ? 'text-white' : ''}
+                    `}>
                         Services
                     </span>
                 </div>
             </li>
             <li 
             onClick={()=>setSelectedComponent('TASKS')} 
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'TASKS' ? 'bg-blue-500' : ''}`}>
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'TASKS' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full '>
                     <span>
-                        <UsersIcon color='rgb(107 114 128)'/>
+                        <UsersIcon color={`${selectedComponent==='TASKS' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
-                    <span className='hidden xl:flex text-xs xl:text-sm text-gray-700'>
+                    <span className={`
+                    hidden xl:flex text-xs xl:text-sm text-gray-700
+                    ${selectedComponent === 'TASKS' ? 'text-white' : ''}
+                    `}>
                         Tasks
                     </span>
                 </div>
