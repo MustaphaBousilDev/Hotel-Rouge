@@ -8,7 +8,9 @@ import Bookings from '@/components/dashboard/Bookings'
 import Orders from '@/components/dashboard/Orders'
 import Rooms from '@/components/dashboard/Rooms'
 import Services from '@/components/dashboard/Services'
+import Income from '@/components/dashboard/Income'
 import { Tasks  as TasksDash} from '@/components/dashboard/Tasks'
+
 const componentsDash={
     'GUASTS': <Guasts/>,
     'EMPLOYE' : <Employée/>,
@@ -16,7 +18,8 @@ const componentsDash={
     'ORDERS': <Orders/>,
     'ROOMS':<Rooms/>,
     'SERVICES':<Services/>,
-    'TASKS':<TasksDash/>
+    'TASKS':<TasksDash/>,
+    'INCOME':<Income/>
 }
 
 export const CustomTestimonial = () => {
@@ -60,17 +63,17 @@ export const CustomTestimonial = () => {
                 </div>
             </li>
             <li 
-            onClick={()=>setSelectedComponent('EMPLOYEs')} 
-            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'EMPLOYEs' ? 'bg-primary ' : ''}`}>
+            onClick={()=>setSelectedComponent('INCOME')} 
+            className={`w-[12.5%] border-r cursor-pointer transition duration-300  px-3 ${selectedComponent === 'INCOME' ? 'bg-primary ' : ''}`}>
                 <div className='flex gap-2 justify-center items-center h-full '>
                     <span>
-                        <UsersIcon color={`${selectedComponent==='EMPLOYEs' ? '#fff' : 'rgb(107 114 128)'}`}/>
+                        <UsersIcon color={`${selectedComponent==='INCOME' ? '#fff' : 'rgb(107 114 128)'}`}/>
                     </span>
                     <span className={`
                     hidden xl:flex text-xs xl:text-sm text-gray-700
-                    ${selectedComponent === 'EMPLOYEs' ? 'text-white' : ''}
+                    ${selectedComponent === 'INCOME' ? 'text-white' : ''}
                     `}>
-                        Employee
+                        Income
                     </span>
                 </div>
             </li>
