@@ -7,10 +7,12 @@ import CoffeeIcon from '@mui/icons-material/Coffee';
 import NoMealsIcon from '@mui/icons-material/NoMeals';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import HalfPiaChart from '../statistiques/charts/StrightAnglePieChart';
+import WeekPicker from '../calendars/roomsCalendar/CalendarRooms';
 
 const Rooms = () => {
   return (
-    <div className='flex flex-col gap-2 '>
+    <div className=' flex flex-col gap-1'>
+      <div className='flex flex-col gap-2 '>
       <div className='rounded-md flex flex-wrap items-center gap-2 xl:gap-3   p-1'>
           <div className='w-full lg:w-[49%] flex items-center justify-center flex-col xl:w-[24%] bg-primaryLight p-4 rounded-md shadow-md'>
             one
@@ -84,6 +86,10 @@ const Rooms = () => {
             <li className='w-10 h-6 bg-primaryLight'></li>
           </ul>
         </div>
+      </div>
+      </div>
+      <div className='bg-white rounded-md lg:w-[35%] xl:w-[30%] shadow-md'>
+        <WeekPicker/>
       </div>
     </div>
   )

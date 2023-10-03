@@ -18,7 +18,7 @@ const AdminLayout:FC<Props>= ({children}) => {
        <title>{env.NEXT_PUBLIC_APP_NAME}</title>
      </Head>
      <SideBar menu={ADMIN_NAV} />
-     <div className='relative ml-[6rem] flex flex-grow  bg-dashboard flex-col'>
+     <div className='relative  ml-[6rem] flex flex-grow  bg-dashboard flex-col xl:overflow-hidden'>
         <div className='absolute inset-x-0 top-0 -z-10 min-h-[100vh]  bg-gradient-to-br' />
           <nav className=' flex w-auto  rounded-xl m-4 mx-2 justify-end'>
             <Navbar/>

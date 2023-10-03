@@ -1,7 +1,7 @@
 import AuthGuard from '@/components/hoc/AuthGuard';
 import Loader from '@/components/Loader';
 import { ToastProvider } from '@/components/providers/ToastProvider';
-import '@/styles/globals.css';
+
 
 import type { Role } from '@prisma/client';
 import {
@@ -16,6 +16,7 @@ import { Router } from 'next/router';
 import { useEffect, useState } from 'react';
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"; 
+import '@/styles/globals.css';
 config.autoAddCss = false;
 type AuthType = {
   role: Role;

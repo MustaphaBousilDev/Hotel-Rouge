@@ -40,6 +40,15 @@ body {
 
 /*custom style material ui components*/
 
+
+/*calendar room*/
+.css-1cafy48-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition{
+  height: 100%;
+}
+.css-cwhad8-MuiDateCalendar-root{
+  width: 100%;
+}
+
  [type='button'], [type='reset'], [type='submit']{
   background-color: '#0f8dc7';
 }
@@ -49,6 +58,10 @@ body {
 
 .recharts-layer{
   outline: none;
+}
+
+.css-cwhad8-MuiDateCalendar-root{
+ max-height: 250px;
 }
 
 
